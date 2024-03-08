@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const app = express();
+
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -10,6 +12,7 @@ cloudinary.config({
 
 const mongoose = require("mongoose");
 // middlewares -> ici global car mis directement via la commande app.use
+app.use(cors());
 app.use(express.json());
 
 //connexion BDD
